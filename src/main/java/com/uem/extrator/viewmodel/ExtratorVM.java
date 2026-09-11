@@ -116,13 +116,13 @@ public class ExtratorVM {
     @Command
     @NotifyChange({"totalCurriculos", "totalPesquisadoresUem", "textoDesatualizados", "consultasHoje", "usuariosAtivos", "online", "statusTexto", "statusClasse", "statusIcone"})
     public void atualizarDashboard() {
-        // 1. Métricas rápidas
+        // Métricas rápidas
         this.totalCurriculos = curriculoDAO.contarTotalCurriculos();
         this.consultasHoje = curriculoDAO.getConsultasHoje();
         this.totalPesquisadoresUem = curriculoDAO.contarPesquisadoresUem();
         this.usuariosAtivos = UsuarioSessaoListener.getTotalOnline();
 
-        // 2. Ping do CNPq FORA DA THREAD (Síncrono - a tela espera ele terminar para desenhar os cartões)
+        // ping do CNPq FORA DA THREAD (Síncrono - a tela espera ele terminar para desenhar os cartões)
         this.online = lattesService.testarConexaoCNPq();
 
         if (this.online) {
@@ -185,7 +185,7 @@ public class ExtratorVM {
              * temporal no próprio Java em O(N).
              */
 
-            // 1. Obter todos os períodos de vínculo UEM válidos por pesquisador
+            // obter todos os períodos de vínculo UEM válidos por pesquisador
             String hqlVinculos = "SELECT a.curriculo.id, v.anoInicio, v.anoFim " +
                                  "FROM Atuacao a JOIN a.vinculos v JOIN a.instituicao i " +
                                  "WHERE i.siglaInstituicao = 'UEM' OR i.nomeInstituicao LIKE '%Universidade Estadual de Maringá%'";
@@ -203,7 +203,7 @@ public class ExtratorVM {
             int anoAtual = java.time.Year.now().getValue();
             int anoLimite = anoAtual - 10;
 
-            // 2. Obter produções brutas dos pesquisadores vinculados à UEM (Sem produto cartesiano)
+            // obter produções brutas dos pesquisadores vinculados à UEM (Sem produto cartesiano)
             String hqlProds = "SELECT p.curriculo.id, p.ano, p.tipo, p.hashTitulo " +
                               "FROM Producao p " +
                               "WHERE p.ano IS NOT NULL " +
@@ -214,7 +214,7 @@ public class ExtratorVM {
 
             List<Object[]> rawProds = session.createQuery(hqlProds, Object[].class).getResultList();
 
-            // 3. Processamento Java-Side: Filtragem temporal e Agrupamento
+            // processamento Java-Side: Filtragem temporal e Agrupamento
             java.util.Map<Integer, java.util.Set<String>> countByAno = new java.util.TreeMap<>();
             java.util.Map<String, java.util.Set<String>> countByTipo = new java.util.HashMap<>();
 
@@ -249,7 +249,7 @@ public class ExtratorVM {
                 }
             }
 
-            // 4. Montar as strings JSON para os gráficos
+            // Montar as strings JSON para os gráficos
             StringBuilder labels1 = new StringBuilder("['");
             StringBuilder data1 = new StringBuilder("[");
             boolean first1 = true;

@@ -14,6 +14,11 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.OutputStream;
 
+
+/**
+ * mini 'api' que serve os downloads dos XML's (funcionalidade estrito a admin da tela de pessoas)
+ */
+
 @WebServlet("/api/download")
 public class DownloadServlet extends HttpServlet {
 

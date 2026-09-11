@@ -6,7 +6,7 @@ import java.util.concurrent.ConcurrentHashMap;
 
 public class UsuarioSessaoListener implements HttpSessionBindingListener {
 
-    // O grande "cofre" estático que o Tomcat todo enxerga
+    // O grande "cofre" estatico que o Tomcat todo enxerga
     private static final ConcurrentHashMap<String, UsuarioSessaoListener> ativos = new ConcurrentHashMap<>();
 
     private String login;

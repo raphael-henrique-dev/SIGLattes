@@ -18,7 +18,7 @@ public class ConfigManager {
     private final String configPath;
 
 
-    // !! ESSAS VARIÁVEIS NÃO SÃO ALTERAS PELA TELA DE CONFIGURAÇÕES !! //
+    // !! ESSAS VARIÁVEIS NÃO SÃO ALTERAS PELA TELA DE CONFIGURAÇÕES !! (exceto a url do cnqp em 'valores padrão' logo abaixo) //
     // APIs Externas
     public static final String URL_CNPQ_WSDL = "http://servicosweb.cnpq.br/srvcurriculo/WSCurriculo?wsdl";
     public static final String URL_SEMANTIC_SCHOLAR_SEARCH = "https://api.semanticscholar.org/graph/v1/paper/search";

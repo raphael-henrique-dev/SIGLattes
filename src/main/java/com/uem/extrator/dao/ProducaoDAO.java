@@ -58,7 +58,7 @@ public class ProducaoDAO {
             }
         }
 
-        // Levenshtein apenas para artigos sem DOI (grupo reduzido ~43% do total)
+        // Levenshtein apenas para artigos sem DOI (grupo reduzido do total)
         List<String> canonicos = new ArrayList<>();
         for (String titulo : titulosSemDoi) {
             boolean jaExiste = false;

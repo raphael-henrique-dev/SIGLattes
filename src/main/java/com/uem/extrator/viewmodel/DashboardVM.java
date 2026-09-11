@@ -36,10 +36,10 @@ public class DashboardVM {
     @Command
     @NotifyChange({"totalCurriculos", "online", "statusTexto", "statusClasse", "statusIcone"})
     private void atualizarDashboard() {
-        // 1. busca total de curriculos
+        // busca total de curriculos
         this.totalCurriculos = curriculoDAO.contarTotalCurriculos();
 
-        // 2. testa a conexão
+        // testa a conexão
         this.online = lattesService.testarConexaoCNPq();
 
         if (this.online) {

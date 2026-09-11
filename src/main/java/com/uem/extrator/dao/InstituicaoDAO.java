@@ -102,11 +102,11 @@ public class InstituicaoDAO {
     public synchronized Instituicao buscarPorSimilaridade(Session session, String nomeCandidato) {
         if (nomeCandidato == null || nomeCandidato.trim().isEmpty()) return null;
 
-        // 1. Busca exata (rápida via índice)
+        // Busca exata (rápida via índice)
         Instituicao exata = buscarPorNome(session, nomeCandidato);
         if (exata != null) return exata;
 
-        // 2. Busca por similaridade semântica
+        //Busca por similaridade semântica
         // Carrega todas as instituições em cache se necessário (ou se expirou)
         if (cacheTodas == null || (System.currentTimeMillis() - ultimaAtualizacaoTodas) > TEMPO_CACHE) {
             cacheTodas = session.createQuery("FROM Instituicao", Instituicao.class).list();

@@ -75,7 +75,7 @@ public class CurriculoDAO {
 
                         /*
                          * ABORDAGEM DB2: Buscar IDs antes de apagar para evitar LOCK ESCALATION.
-                         * Nunca usar DELETE com múltiplos SELECTs aninhados em bancos corporativos.
+                         * Nunca usar DELETE com múltiplos SELECTs aninhados.
                          */
                         List<Long> idsAtuacoes = session.createQuery(
                                         "SELECT a.id FROM Atuacao a WHERE a.curriculo.idLattes = :id", Long.class)

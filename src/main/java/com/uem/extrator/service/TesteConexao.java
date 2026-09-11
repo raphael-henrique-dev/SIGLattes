@@ -17,19 +17,19 @@ public class TesteConexao {
         System.out.println("\n--- TENTATIVA 1: Tipo HTTP ---");
         try {
             testarConexao(Proxy.Type.HTTP);
-            System.out.println("✅ SUCESSO! Seu proxy é do tipo HTTP. Configure o LattesService com Proxy.Type.HTTP.");
+            System.out.println("SUCESSO! Seu proxy é do tipo HTTP. Configure o LattesService com Proxy.Type.HTTP.");
             return; // Se funcionou, para aqui.
         } catch (Exception e) {
-            System.out.println("❌ FALHA HTTP: " + e.getMessage());
+            System.out.println("FALHA HTTP: " + e.getMessage());
         }
 
         // TESTE 2: TENTATIVA COMO PROXY SOCKS (TÚNEL SSH)
         System.out.println("\n--- TENTATIVA 2: Tipo SOCKS (SSH) ---");
         try {
             testarConexao(Proxy.Type.SOCKS);
-            System.out.println("✅ SUCESSO! Seu proxy é do tipo SOCKS. Configure o LattesService com Proxy.Type.SOCKS.");
+            System.out.println("SUCESSO! Seu proxy é do tipo SOCKS. Configure o LattesService com Proxy.Type.SOCKS.");
         } catch (Exception e) {
-            System.out.println("❌ FALHA SOCKS: " + e.getMessage());
+            System.out.println("FALHA SOCKS: " + e.getMessage());
             System.out.println("\n CONCLUSÃO: O proxy não está acessível ou o firewall está bloqueando o Java.");
         }
     }

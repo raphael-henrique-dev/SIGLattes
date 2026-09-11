@@ -6,6 +6,10 @@ import org.hibernate.Session;
 import java.text.Normalizer;
 import java.util.*;
 
+/**
+ * algoritmo de levenshtein para sanitizar dados / prevenir duplicação por strings com typos e/ou semelhantes mas não iguais
+ */
+
 public class FiltroSimilaridade {
 
     public static int distanciaLevenshtein(String s1, String s2) {
@@ -300,7 +304,7 @@ public class FiltroSimilaridade {
 
         String[] palavras = nomeCompleto.split("\\s+");
         
-        // 1. Tenta extrair a sigla tradicional (primeiras letras)
+        // Tenta extrair a sigla tradicional (primeiras letras)
         StringBuilder sb = new StringBuilder();
         for (String p : palavras) {
             // Palavras importantes, mesmo curtas, contribuem para a sigla
